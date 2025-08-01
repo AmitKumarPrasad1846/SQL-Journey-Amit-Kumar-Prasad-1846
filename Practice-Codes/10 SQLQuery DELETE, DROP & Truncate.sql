@@ -1,0 +1,1 @@
+--DELETE  DROP & TRUNCATEuse Googleselect * from empf--DELETEdelete from empf where name = 'Anjali'select * from empf--TRUNCATEtruncate table empfselect * from empf--DROPdrop table empfselect * from empfSELECT * from emptDELETE from empt where gender = 'female'SELECT * from empttruncate table emptSELECT * from emptdrop table empt
