@@ -53,7 +53,7 @@ SQL-Journey-Amit-Kumar-Prasad-1846/
 
 Download the full theory notes:
 
-📥 [MS SQL Complete Notes (PDF)](./MS_SQL_Notes_By_Amit_Kumar_Prasad_1846.pdf)
+📥 [MS SQL Complete Notes (PDF)](./MS_SQL_Notes.pdf)
 
 ---
 
