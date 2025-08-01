@@ -9,11 +9,14 @@ It includes:
 
 ---
 
-## 📄 Contents
+## 📂 Contents
 
-- [`MS_SQL_Notes_By_Amit_Kumar_Prasad_1846.pdf`](./MS_SQL_Notes_By_Amit_Kumar_Prasad_1846.pdf)
-- [`Practice-Codes/`](./Practice-Codes/)
-- [`Projects/`](./Projects/)
+- [MS SQL Complete Notes (PDF)](./MS_SQL_Notes_By_Amit_Kumar_Prasad_1846.pdf)
+- 🔧 **Practice Codes**:
+  - [01 Create DB & USE DB](./Practice-Codes/01%20SQLQuery%20Create%20DB%20&%20USE%20DB.sql)
+  - [02 Create a Table](./Practice-Codes/02%20SQLQuery%20Create%20a%20Table.sql)
+  - …  
+  - [57 Rollup](./Practice-Codes/57%20SQL%20Query%20Rollup.sql)
 
 ---
 
