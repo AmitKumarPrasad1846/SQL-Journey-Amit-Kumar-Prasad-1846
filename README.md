@@ -59,10 +59,10 @@ Download the full theory notes:
 
 ## ❤️ Connect With Me
 
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)]([https://www.instagram.com/tera_username_yahan](https://www.instagram.com/amiku.1846/))
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)]([https://www.linkedin.com/in/tera-linkedin-username/](https://www.linkedin.com/in/amit-kumar-prasad-00b297369/))
+[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)]([https://www.instagram.com/your_instagram_username_here](https://www.instagram.com/amiku.1846/))
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)]([https://www.linkedin.com/in/your_linkedin_username_here](https://www.linkedin.com/in/amit-kumar-prasad-00b297369/))
 
+> Made with ❤️, chai 🫖, and SQL ⚙️ in India 🇮🇳
 
-Made with 🧠, ☕, and ❤️ in India 🇮🇳
 
 > Never stop learning, never stop querying. 🚀
