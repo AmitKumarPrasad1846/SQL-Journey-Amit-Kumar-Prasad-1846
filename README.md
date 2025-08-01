@@ -57,14 +57,6 @@ Download the full theory notes:
 
 ---
 
-## 📌 Upcoming Plans
-
-* [ ] Add real-world mini projects
-* [ ] Add GitHub Pages-based SQL visualizer
-* [ ] Interactive quizzes after each section
-
----
-
 ## ❤️ Connect With Me
 
 [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=for-the-badge&logo=Instagram&logoColor=white)]([https://www.instagram.com/tera_username_yahan](https://www.instagram.com/amiku.1846/))
