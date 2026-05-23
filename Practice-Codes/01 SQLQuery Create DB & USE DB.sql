@@ -1,4 +1,4 @@
---Create a database
+--Creating a database
 
 create database Google
 
