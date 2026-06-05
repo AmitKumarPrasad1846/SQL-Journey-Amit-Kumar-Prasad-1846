@@ -3,566 +3,79 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>SQL Mastery Hub | Interactive Learning & Challenges</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background 0.3s ease, color 0.2s ease, border-color 0.2s ease;
-        }
-
-        :root {
-            --bg-gradient-start: rgba(15, 25, 35, 0.85);
-            --bg-gradient-end: rgba(5, 10, 20, 0.9);
-            --glass-bg: rgba(20, 30, 45, 0.6);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --text-primary: #f0f3f8;
-            --text-secondary: #b0c4de;
-            --accent: #3b82f6;
-            --accent-glow: #60a5fa;
-            --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            --code-bg: #0a0f18;
-            --challenge-bg: #1e2a3a;
-            --toggle-bg: #2d3e50;
-        }
-
-        body.light {
-            --bg-gradient-start: rgba(230, 240, 250, 0.9);
-            --bg-gradient-end: rgba(200, 215, 230, 0.95);
-            --glass-bg: rgba(245, 248, 250, 0.7);
-            --glass-border: rgba(0, 0, 0, 0.1);
-            --text-primary: #1a2a3a;
-            --text-secondary: #2c3e4e;
-            --accent: #2563eb;
-            --code-bg: #eef2f7;
-            --challenge-bg: #e2e8f0;
-            --toggle-bg: #cbd5e1;
-            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-            background: radial-gradient(circle at 10% 20%, var(--bg-gradient-start), var(--bg-gradient-end));
-            color: var(--text-primary);
-            min-height: 100vh;
-            backdrop-filter: blur(2px);
-            padding: 1.5rem;
-        }
-
-        /* glass container */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 2rem;
-            box-shadow: var(--card-shadow);
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            background: linear-gradient(135deg, #e0e7ff, var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .sub {
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-        }
-
-        .theme-toggle {
-            background: var(--toggle-bg);
-            border: none;
-            border-radius: 3rem;
-            padding: 0.6rem 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            color: var(--text-primary);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        /* nav tabs */
-        .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin: 1.5rem 0 1rem;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 0.8rem;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            font-weight: 600;
-            border-radius: 2rem;
-            cursor: pointer;
-            color: var(--text-secondary);
-            transition: 0.2s;
-        }
-
-        .tab-btn.active {
-            background: var(--accent);
-            color: white;
-            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
-        }
-
-        .tab-content {
-            display: none;
-            animation: fade 0.25s ease;
-        }
-
-        .tab-content.active-tab {
-            display: block;
-        }
-
-        @keyframes fade {
-            from {
-                opacity: 0;
-                transform: translateY(5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* topics grid */
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .topic-card {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(4px);
-            border-radius: 1.2rem;
-            padding: 1rem;
-            border-left: 4px solid var(--accent);
-            transition: transform 0.2s;
-        }
-
-        .topic-card:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .topic-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .topic-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .challenge-area {
-            background: var(--challenge-bg);
-            border-radius: 1.5rem;
-            padding: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .question {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
-
-        .code-input {
-            width: 100%;
-            background: var(--code-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--glass-border);
-            border-radius: 1rem;
-            padding: 0.8rem;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            resize: vertical;
-        }
-
-        .btn {
-            background: var(--accent);
-            border: none;
-            padding: 0.5rem 1.2rem;
-            border-radius: 2rem;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            margin-top: 0.7rem;
-            margin-right: 0.5rem;
-        }
-
-        .feedback {
-            margin-top: 0.8rem;
-            font-size: 0.9rem;
-            padding: 0.5rem;
-            border-radius: 1rem;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .resource-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
-            padding: 0.6rem 1.4rem;
-            border-radius: 2rem;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 1rem;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 0.8rem;
-            margin-top: 2rem;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 640px) {
-            body {
-                padding: 1rem;
-            }
-
-            .glass-panel {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Mastery Hub | Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="glass-panel">
-        <div class="header">
-            <div>
-                <h1>✨ SQL Mastery Hub</h1>
-                <div class="sub">Interactive tutorials · Quick challenges · 70+ topics</div>
-            </div>
-            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
+    <nav class="navbar">
+        <div class="nav-brand">🚀 SQL Mastery Hub</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">🏠 Home</a>
+            <a href="notes.html">📚 Notes</a>
+            <a href="challenges.html">⚡ Challenges</a>
         </div>
+        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+    </nav>
 
-        <!-- Tabs Navigation -->
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="topics">📚 All Topics</button>
-            <button class="tab-btn" data-tab="challenge">⚡ Quick Challenge</button>
-            <button class="tab-btn" data-tab="resources">📎 Resources & Drive</button>
-        </div>
-
-        <!-- Topics Tab (70+ topics inclusive from list + extra) -->
-        <div id="topicsTab" class="tab-content active-tab">
-            <div class="topics-grid" id="topicsContainer"></div>
-            <p style="margin-top: 1rem; font-size: 0.8rem; text-align: center;">🔍 + Advanced: CTE, Window Functions,
-                Pivot, Dynamic SQL, JSON, XML, Plan Management</p>
-        </div>
-
-        <!-- Quick Challenge Tab: randomized interactive SQL challenge -->
-        <div id="challengeTab" class="tab-content">
-            <div class="challenge-area">
-                <div class="question" id="challengeQuestion">Loading challenge...</div>
-                <textarea id="sqlAnswer" class="code-input" rows="5"
-                    placeholder="Write your SQL query here..."></textarea>
-                <div>
-                    <button class="btn" id="submitChallenge">✅ Submit Answer</button>
-                    <button class="btn" id="nextChallenge">🎲 Next Challenge</button>
-                </div>
-                <div id="challengeFeedback" class="feedback"></div>
-                <div style="margin-top: 1rem; font-size: 0.8rem;">💡 Tip: Try using keywords like SELECT, FROM, WHERE,
-                    JOIN, GROUP BY.</div>
-            </div>
-            <div class="glass-panel" style="margin-top: 1rem; background: rgba(0,0,0,0.2);">
-                <h3>🏆 How it works</h3>
-                <p>Each challenge tests a real SQL concept. Write the correct SQL query based on the scenario. Check
-                    your answer — hints are friendly!</p>
-            </div>
-        </div>
-
-        <!-- Resources Tab -->
-        <div id="resourcesTab" class="tab-content">
-            <div class="glass-panel" style="background: rgba(0,0,0,0.2); text-align: center;">
-                <h3>📘 Complete SQL Notes & Practice Files</h3>
-                <p>Access all MS SQL scripts, examples, PDF notes covering 70+ scripts like JOINS, Triggers, Indexes,
-                    Stored Procedures, and more.</p>
-                <a href="https://drive.google.com/file/d/1tdkH7berngNMRzoSOLJGaBhlFNDueHd1/view?usp=drive_link"
-                    target="_blank" class="resource-link">
-                    📥 Download SQL Master Resources (Google Drive)
-                </a>
-                <p style="margin-top: 1.2rem;">📌 Also includes: Transactions, Exception handling, RANK, DENSE_RANK,
-                    OFFSET-FETCH, STUFF, COALESCE, IIF, ROLLUP, CUBE, and many more.</p>
-            </div>
+    <div class="hero vibgyor-bg">
+        <h1 class="rainbow-text">Master SQL From Zero to Hero</h1>
+        <p>70+ Topics • Interactive Challenges • Real-World Examples • Complete Notes</p>
+        <div class="hero-buttons">
+            <a href="notes.html" class="btn btn-primary">📖 Start Learning</a>
+            <a href="challenges.html" class="btn btn-secondary">🎯 Take Challenges</a>
         </div>
     </div>
-    <footer>
-        🌟 Interactive SQL Lab — learn by doing. Covers all scripts from 01 to 57 & beyond (Window Functions, Pivot,
-        Subqueries, Triggers, etc.)
+
+    <div class="container">
+        <h2 class="section-title">✨ What You'll Learn</h2>
+        <div class="stats-grid">
+            <div class="stat-card" style="border-top: 4px solid #FF0000;">
+                <div class="stat-number">70+</div>
+                <div>SQL Topics Covered</div>
+            </div>
+            <div class="stat-card" style="border-top: 4px solid #FF7F00;">
+                <div class="stat-number">50+</div>
+                <div>Interactive Challenges</div>
+            </div>
+            <div class="stat-card" style="border-top: 4px solid #FFFF00;">
+                <div class="stat-number">100+</div>
+                <div>Code Examples</div>
+            </div>
+            <div class="stat-card" style="border-top: 4px solid #00FF00;">
+                <div class="stat-number">24/7</div>
+                <div>Practice Access</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📚 Topics Include</h2>
+        <div class="topics-preview">
+            <span class="topic-tag" style="background:#FF000020; color:#FF0000;">📊 SELECT Queries</span>
+            <span class="topic-tag" style="background:#FF7F0020; color:#FF7F00;">🔗 JOINS (INNER, OUTER, CROSS)</span>
+            <span class="topic-tag" style="background:#FFFF0020; color:#CCCC00;">📈 GROUP BY & HAVING</span>
+            <span class="topic-tag" style="background:#00FF0020; color:#00AA00;">🔄 Subqueries & CTE</span>
+            <span class="topic-tag" style="background:#0000FF20; color:#0000FF;">📊 Window Functions</span>
+            <span class="topic-tag" style="background:#4B008220; color:#4B0082;">⚙️ Stored Procedures</span>
+            <span class="topic-tag" style="background:#9400D320; color:#9400D3;">🔔 Triggers</span>
+            <span class="topic-tag" style="background:#FF149320; color:#FF1493;">📑 Indexes & Optimization</span>
+        </div>
+
+        <div class="drive-card">
+            <h3>📥 Download Complete SQL Resources</h3>
+            <p>Access all MS SQL scripts, PDF notes, practice files (70+ files covering all topics)</p>
+            <a href="https://drive.google.com/file/d/1tdkH7berngNMRzoSOLJGaBhlFNDueHd1/view?usp=drive_link"
+                class="btn-drive" target="_blank">
+                🚀 Download from Google Drive
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 SQL Mastery Hub | Made with 💜 for SQL Learners | All scripts from basic to advanced</p>
     </footer>
 
-    <script>
-        // --------------------------------------------------------------
-        // 1. Mega list of SQL topics (all 57 mentioned + additional)
-        // --------------------------------------------------------------
-        const sqlTopics = [
-            "01 Create & USE DB", "02 CREATE TABLE", "03 INSERT INTO", "04 UPDATE", "05 SELECT", "06 TOP clause", "07 DISTINCT", "08 DELETE", "09 Clone Table",
-            "10 DELETE vs DROP vs TRUNCATE", "11 ALTER TABLE", "12 DROP DATABASE", "13 RENAME COLUMN", "14 CHANGE DATATYPE", "15 Temp Tables", "16 OPERATORS (AND,OR,NOT)",
-            "17 OPERATORS (IN,BETWEEN)", "18 LIKE Operator", "19 ALIAS", "20 GROUP BY", "21 HAVING", "22 Constraints Overview", "23 CHECK Constraint", "24 DEFAULT Constraint",
-            "25 UNIQUE Constraint", "26 PRIMARY KEY", "27 Constraints at creation", "28 FOREIGN KEY", "29 Import CSV", "30 Export File", "31 System Databases",
-            "32 System Functions", "33 SUBSTRING practice", "34 User Defined Functions", "35 UDF Practical", "36 JOINS (INNER,LEFT,RIGHT)", "37 Create Company Table",
-            "38 CROSS JOIN", "39 Join multiple tables", "40 Practical JOIN", "41 Subqueries", "42 RANK() & DENSE_RANK()", "43 Indexes", "44 Clustered Index",
-            "45 Stored Procedure", "46 Views", "47 FLOOR & Math", "48 Transactions", "49 OFFSET-FETCH, STUFF", "50 Exception Handling (TRY-CATCH)",
-            "51 Triggers", "52 CAST & CONVERT", "53 ROW_NUMBER()", "54 COALESCE", "55 CTE (Common Table Expression)", "56 IIF Function", "57 ROLLUP / CUBE",
-            // Additional modern concepts
-            "Window Functions (SUM OVER)", "PIVOT / UNPIVOT", "Dynamic SQL", "JSON Support", "XML Methods", "Query Store", "Execution Plans", "SPACE & REPLICATE",
-            "String Aggregation (STRING_AGG)", "DATE functions", "MERGE Statement", "OUTPUT Clause"
-        ];
-
-        function renderTopics() {
-            const container = document.getElementById('topicsContainer');
-            container.innerHTML = sqlTopics.map(topic => `
-            <div class="topic-card">
-                <div class="topic-title">📌 ${topic}</div>
-                <div class="topic-desc">Interactive concept ready — practice via challenges or refer to drive notes.</div>
-            </div>
-        `).join('');
-        }
-
-        // --------------------------------------------------------------
-        // 2. Challenge Bank (diverse, covering major areas)
-        // --------------------------------------------------------------
-        const challengeBank = [
-            {
-                question: `🎯 **Challenge 1 (SELECT & WHERE):**  
-            You have a table 'Employees' with columns: Id, Name, Salary, Department.  
-            Write a query to fetch the Name and Salary of employees earning more than 50000.`,
-                validate: (ans) => {
-                    const lower = ans.toLowerCase().replace(/\s/g, '');
-                    if (lower.includes('selectname,salary') && lower.includes('fromemployees') && lower.includes('where salary>50000'))
-                        return { correct: true, msg: "✅ Perfect! WHERE filters salary." };
-                    if (lower.includes('select') && lower.includes('salary>50000'))
-                        return { correct: true, msg: "✅ Great! Basic filtering works." };
-                    return { correct: false, msg: "❌ Hint: SELECT Name, Salary FROM Employees WHERE Salary > 50000;" };
-                }
-            },
-            {
-                question: `🎯 **Challenge 2 (JOIN):**  
-            Tables: Orders(OrderID, CustomerID, Amount), Customers(CustomerID, Name).  
-            Write a query to list OrderID, Customer Name, Amount using INNER JOIN.`,
-                validate: (ans) => {
-                    const lower = ans.toLowerCase().replace(/\s/g, '');
-                    const hasJoin = lower.includes('join') || lower.includes('inner join');
-                    if (hasJoin && lower.includes('orders') && lower.includes('customers') && lower.includes('orderid'))
-                        return { correct: true, msg: "✨ Exactly! INNER JOIN links related rows." };
-                    return { correct: false, msg: "💡 Try: SELECT Orders.OrderID, Customers.Name, Orders.Amount FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;" };
-                }
-            },
-            {
-                question: `🎯 **Challenge 3 (GROUP BY & Aggregation):**  
-            Table: Sales(Product, Region, Revenue).  
-            Write a query to get total Revenue per Region.`,
-                validate: (ans) => {
-                    const low = ans.toLowerCase();
-                    if (low.includes('group by') && low.includes('sum(revenue)') && low.includes('region'))
-                        return { correct: true, msg: "🏆 Correct! GROUP BY aggregates regional revenue." };
-                    return { correct: false, msg: "📌 Standard: SELECT Region, SUM(Revenue) FROM Sales GROUP BY Region;" };
-                }
-            },
-            {
-                question: `🎯 **Challenge 4 (HAVING):**  
-            Same Sales table. Write a query to get Regions having total Revenue > 10000.`,
-                validate: (ans) => {
-                    const l = ans.toLowerCase();
-                    if (l.includes('having') && l.includes('sum(revenue)>10000') && l.includes('group by'))
-                        return { correct: true, msg: "🎉 Correct! HAVING filters after grouping." };
-                    return { correct: false, msg: "💡 Hint: SELECT Region, SUM(Revenue) FROM Sales GROUP BY Region HAVING SUM(Revenue) > 10000;" };
-                }
-            },
-            {
-                question: `🎯 **Challenge 5 (Subquery):**  
-            Employees(Id, Name, Salary). Find employees whose salary is above the average salary.`,
-                validate: (ans) => {
-                    const l = ans.toLowerCase();
-                    if (l.includes('select') && l.includes('salary > (select avg(salary)') && l.includes('from employees'))
-                        return { correct: true, msg: "🚀 Subquery mastery! Above average." };
-                    return { correct: false, msg: "🔁 Example: SELECT Name FROM Employees WHERE Salary > (SELECT AVG(Salary) FROM Employees);" };
-                }
-            },
-            {
-                question: `🎯 **Challenge 6 (CTE - Common Table Expression):**  
-            Write a CTE to get high earners (Salary > 60000) from Employees table, then SELECT * from CTE.`,
-                validate: (ans) => {
-                    let l = ans.toLowerCase();
-                    if (l.includes('with') && l.includes('as (') && l.includes('select') && l.includes('from employees') && l.includes('salary > 60000'))
-                        return { correct: true, msg: "⭐ Excellent! CTE improves readability." };
-                    return { correct: false, msg: "WITH HighEarners AS (SELECT * FROM Employees WHERE Salary > 60000) SELECT * FROM HighEarners;" };
-                }
-            },
-            {
-                question: `🎯 **Challenge 7 (RANK()):**  
-            Employees table. Write a query to rank employees by Salary (highest first) using RANK().`,
-                validate: (ans) => {
-                    let l = ans.toLowerCase();
-                    if (l.includes('rank() over') && l.includes('order by salary desc'))
-                        return { correct: true, msg: "🎖️ Window function done!" };
-                    return { correct: false, msg: "SELECT Name, Salary, RANK() OVER (ORDER BY Salary DESC) AS Rank FROM Employees;" };
-                }
-            },
-            {
-                question: `🎯 **Challenge 8 (UPDATE with condition):**  
-            Products table: ProductID, Price. Increase price by 10% for products with Price < 100.`,
-                validate: (ans) => {
-                    let l = ans.toLowerCase();
-                    if (l.includes('update products') && l.includes('set price = price * 1.10') && l.includes('where price < 100'))
-                        return { correct: true, msg: "💲 Update executed! Great math." };
-                    return { correct: false, msg: "UPDATE Products SET Price = Price * 1.10 WHERE Price < 100;" };
-                }
-            }
-        ];
-
-        let currentChallenge = null;
-
-        function loadRandomChallenge() {
-            const randomIndex = Math.floor(Math.random() * challengeBank.length);
-            currentChallenge = challengeBank[randomIndex];
-            document.getElementById('challengeQuestion').innerHTML = currentChallenge.question;
-            document.getElementById('sqlAnswer').value = '';
-            document.getElementById('challengeFeedback').innerHTML = '';
-        }
-
-        function submitChallenge() {
-            if (!currentChallenge) {
-                loadRandomChallenge();
-            }
-            const userAnswer = document.getElementById('sqlAnswer').value.trim();
-            if (userAnswer === "") {
-                document.getElementById('challengeFeedback').innerHTML = "📝 Write an SQL query before submitting!";
-                return;
-            }
-            const result = currentChallenge.validate(userAnswer);
-            if (result.correct) {
-                document.getElementById('challengeFeedback').innerHTML = `<span style="color: #4ade80;">✅ ${result.msg}</span> 🎉 Great job!`;
-            } else {
-                document.getElementById('challengeFeedback').innerHTML = `<span style="color: #f87171;">${result.msg}</span> Try again or check hint.`;
-            }
-        }
-
-        // --------------------------------------------------------------
-        // 3. Theme (Dark/Light)
-        // --------------------------------------------------------------
-        function initTheme() {
-            const saved = localStorage.getItem('sql_theme');
-            if (saved === 'light') {
-                document.body.classList.add('light');
-                document.getElementById('themeToggle').innerHTML = '🌙 Dark Mode';
-            } else {
-                document.body.classList.remove('light');
-                document.getElementById('themeToggle').innerHTML = '☀️ Light Mode';
-            }
-        }
-        function toggleTheme() {
-            if (document.body.classList.contains('light')) {
-                document.body.classList.remove('light');
-                localStorage.setItem('sql_theme', 'dark');
-                document.getElementById('themeToggle').innerHTML = '☀️ Light Mode';
-            } else {
-                document.body.classList.add('light');
-                localStorage.setItem('sql_theme', 'light');
-                document.getElementById('themeToggle').innerHTML = '🌙 Dark Mode';
-            }
-        }
-
-        // --------------------------------------------------------------
-        // 4. Tab Switching Logic
-        // --------------------------------------------------------------
-        function initTabs() {
-            const btns = document.querySelectorAll('.tab-btn');
-            const contents = {
-                topics: document.getElementById('topicsTab'),
-                challenge: document.getElementById('challengeTab'),
-                resources: document.getElementById('resourcesTab')
-            };
-            btns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const tabId = btn.getAttribute('data-tab');
-                    // update active class on buttons
-                    btns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    // hide all contents
-                    Object.values(contents).forEach(c => c.classList.remove('active-tab'));
-                    if (tabId === 'topics') contents.topics.classList.add('active-tab');
-                    if (tabId === 'challenge') contents.challenge.classList.add('active-tab');
-                    if (tabId === 'resources') contents.resources.classList.add('active-tab');
-                    // optional: reload challenge on challenge tab first time
-                    if (tabId === 'challenge' && currentChallenge === null) loadRandomChallenge();
-                });
-            });
-            // load initial challenge lazy when needed
-            document.querySelector('[data-tab="challenge"]').addEventListener('click', () => {
-                if (!currentChallenge) loadRandomChallenge();
-            });
-            // Preload challenge if someone clicks the tab but also on initial if challenge tab is active by default? default is topics, so safe
-        }
-
-        // Extra educational: display additional interactive tip - dynamic note
-        function addExtras() {
-            // already everything set
-            document.getElementById('nextChallenge')?.addEventListener('click', () => {
-                loadRandomChallenge();
-                document.getElementById('challengeFeedback').innerHTML = '✨ New challenge ready! Write your SQL.';
-            });
-            document.getElementById('submitChallenge')?.addEventListener('click', submitChallenge);
-        }
-
-        // Additional Script: Check for any missing topics mapping but we already covered all from 01 to 57 including ROLLUP, etc.
-        // Plus advanced. Also we show drive link.
-
-        // Render everything
-        renderTopics();
-        initTheme();
-        initTabs();
-        addExtras();
-
-        // Also ensure that if user double opens the challenge tab from start it's ready
-        window.addEventListener('load', () => {
-            // set initial random challenge on background but not displayed until tab selected
-            if (!currentChallenge) {
-                const randomIndex = Math.floor(Math.random() * challengeBank.length);
-                currentChallenge = challengeBank[randomIndex];
-                // but dom might not be loaded fully, ensure when needed we assign again
-            }
-            // Optional: add event for theme toggle
-            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-            // extra show success that all 57 core topics + beyond 
-            console.log("SQL Mastery Hub - Loaded 70+ topics, challenges, glass design");
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
