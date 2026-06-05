@@ -99,6 +99,11 @@ body.dark .navbar {
     background: #FF7F00;
     color: white;
     font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.05);
 }
 
 /* Hero Section */
@@ -111,6 +116,11 @@ body.dark .navbar {
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
 }
 
 .hero-buttons {
@@ -148,6 +158,24 @@ body.dark .navbar {
     padding: 2rem;
 }
 
+.section-title {
+    font-size: 2rem;
+    margin: 2rem 0 1rem 0;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
 /* Stats Grid */
 .stats-grid {
     display: grid;
@@ -183,6 +211,11 @@ body.dark .stat-card {
 }
 
 /* Topics Tags */
+.topics-preview {
+    text-align: center;
+    margin: 2rem 0;
+}
+
 .topic-tag {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -214,6 +247,11 @@ body.dark .stat-card {
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
+    transition: transform 0.3s;
+}
+
+.btn-drive:hover {
+    transform: scale(1.05);
 }
 
 /* Notes Grid */
@@ -245,6 +283,7 @@ body.dark .note-card {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: #FF7F00;
+    font-weight: bold;
 }
 
 .note-content {
@@ -263,7 +302,31 @@ body.dark .note-card {
     margin: 1rem 0;
 }
 
+.code-block pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 /* Challenge Container */
+.challenge-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--card-light);
+    border-radius: 15px;
+}
+
+body.dark .challenge-stats {
+    background: var(--card-dark);
+}
+
+.stat-badge {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
 .challenge-container {
     background: linear-gradient(135deg, #FF000010, #FF7F0010, #FFFF0010);
     border-radius: 20px;
@@ -272,7 +335,7 @@ body.dark .note-card {
 }
 
 .challenge-question {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     padding: 1rem;
@@ -280,24 +343,31 @@ body.dark .note-card {
     border-radius: 10px;
 }
 
+body.dark .challenge-question {
+    background: var(--card-dark);
+}
+
 .challenge-editor {
     width: 100%;
-    min-height: 200px;
+    min-height: 150px;
     font-family: 'Courier New', monospace;
     padding: 1rem;
     border-radius: 10px;
     border: 2px solid #FF7F00;
     background: #1e1e1e;
     color: #d4d4d4;
+    font-size: 0.9rem;
 }
 
 .challenge-buttons {
     margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .btn-challenge {
     padding: 0.7rem 1.5rem;
-    margin-right: 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -324,6 +394,7 @@ body.dark .note-card {
     padding: 1rem;
     border-radius: 10px;
     animation: slideIn 0.3s ease;
+    font-weight: 500;
 }
 
 @keyframes slideIn {
@@ -350,6 +421,12 @@ body.dark .note-card {
     border: 2px solid #FF7F00;
     font-size: 1rem;
     background: var(--card-light);
+    color: inherit;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: #FF0000;
 }
 
 /* Progress Bar */
@@ -369,12 +446,25 @@ body.dark .note-card {
     transition: width 0.3s;
 }
 
+/* Tip Box */
+.tip-box {
+    background: #FF7F0020;
+    border-left: 4px solid #FF7F00;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
 /* Footer */
 .footer {
     text-align: center;
     padding: 2rem;
     background: var(--card-dark);
     margin-top: 3rem;
+}
+
+body.dark .footer {
+    background: #0f1422;
 }
 
 /* Responsive */
@@ -388,11 +478,25 @@ body.dark .note-card {
         font-size: 2rem;
     }
 
+    .hero p {
+        font-size: 1rem;
+    }
+
     .notes-grid {
         grid-template-columns: 1fr;
     }
 
     .container {
         padding: 1rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        margin: 0.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 }
