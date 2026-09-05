@@ -1,40 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Notes | Complete Reference</title>
+    <title>Complete MS SQL Curriculum (57 Topics) | SQL Mastery Hub</title>
+    <meta name="description"
+        content="Access complete theory notes, authentic practice SQL scripts, syntax breakdown, and live playground links for all 57 topics by Amit Kumar Prasad.">
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('sql_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">🚀 SQL Mastery Hub</div>
-        <div class="nav-links">
-            <a href="index.html">🏠 Home</a>
-            <a href="notes.html" class="active">📚 Notes</a>
-            <a href="challenges.html">⚡ Challenges</a>
+    <!-- Top Brand Header -->
+    <header class="top-brand-bar">
+        <a href="index.html" class="brand-logo">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>SQL Mastery Hub</span>
+            <span class="brand-badge">CURRICULUM</span>
+        </a>
+        <div class="top-bar-actions">
+            <a href="playground.html" class="quick-link-btn">Playground</a>
+            <a href="challenges.html" class="quick-link-btn">Challenges</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span>Theme</span>
+            </button>
+            <a href="MS_SQL_Notes.pdf" download class="quick-link-btn"
+                style="border-color: var(--cyan-primary); color: var(--cyan-primary);">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>PDF Guide</span>
+            </a>
         </div>
-        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Hero Header -->
+        <div class="section-header" style="margin-top: 1.5rem;">
+            <div class="hero-pill-badge">
+                <span>57 Structured Lessons</span>
+            </div>
+            <h1 class="section-title">Complete MS SQL Notes & Code</h1>
+            <p class="section-subtitle">
+                Each topic contains complete conceptual theory, syntax rules, downloadable scripts, and direct links to the SQL playground.
+            </p>
+        </div>
+
+        <!-- Progress Tracker Card -->
+        <div class="progress-card">
+            <div class="progress-header">
+                <span style="color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+                    <svg class="svg-icon svg-icon-sm" style="color: var(--cyan-primary);" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    <span>Course Progress:</span> <strong id="progressText" style="color: var(--cyan-primary);">0%</strong>
+                </span>
+                <span id="progressCount" style="color: var(--text-muted); font-size: 0.88rem;">0 of 57 topics completed</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Search and Filter Pills -->
+        <div class="search-filter-bar">
+            <div class="search-input-wrapper">
+                <svg class="svg-icon search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="topicSearchInput" class="search-input"
+                    placeholder="Search any command or keyword (e.g. JOIN, SELECT, TRIGGER, CTE, INDEX)..."
+                    autocomplete="off">
+            </div>
+
+            <div class="filter-pills">
+                <button class="filter-pill active" data-category="All">All Topics (57)</button>
+                <button class="filter-pill" data-category="DDL & Setup">DDL & Setup</button>
+                <button class="filter-pill" data-category="Core DML">Core DML</button>
+                <button class="filter-pill" data-category="Operators & Filters">Operators & Filters</button>
+                <button class="filter-pill" data-category="Grouping & Aggregates">Grouping & Aggregates</button>
+                <button class="filter-pill" data-category="Constraints">Constraints</button>
+                <button class="filter-pill" data-category="Data Flow">Data Flow</button>
+                <button class="filter-pill" data-category="Functions">Functions</button>
+                <button class="filter-pill" data-category="JOINS & Relations">JOINS & Relations</button>
+                <button class="filter-pill" data-category="Advanced Querying">Advanced Querying</button>
+                <button class="filter-pill" data-category="Database Objects">Database Objects</button>
+                <button class="filter-pill" data-category="Database Admin">Database Admin</button>
+            </div>
+        </div>
+
+        <!-- Notes Cards Grid -->
+        <div class="notes-grid" id="topicsGrid">
+            <!-- Dynamic content loads here via script.js -->
+        </div>
+
+        <!-- Download Banner -->
+        <section class="download-hero-card" style="margin-top: 3.5rem;">
+            <span class="download-badge">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>OFFLINE REFERENCE</span>
+            </span>
+            <h2 class="download-hero-title">Download Offline Study Guide</h2>
+            <p class="download-hero-desc">
+                Download the complete 7.3 MB comprehensive MS SQL manual created by Amit Kumar Prasad, packed with syntax tables and interview tips.
+            </p>
+            <div class="download-actions-group">
+                <a href="MS_SQL_Notes.pdf" download class="btn btn-primary">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Download PDF (7.3 MB)</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1tdkH7berngNMRzoSOLJGaBhlFNDueHd1/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <span>Google Drive Mirror</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Rectangular Capsule Navbar (Glassmorphism) -->
+    <nav class="bottom-capsule-nav" aria-label="Bottom Navigation">
+        <a href="index.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="notes.html" class="nav-item active">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span class="nav-text">Notes</span>
+        </a>
+        <a href="challenges.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="nav-text">Challenges</span>
+        </a>
+        <a href="playground.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <span class="nav-text">Playground</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="MS_SQL_Notes.pdf" download class="nav-item nav-btn-highlight">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="nav-text">PDF</span>
+        </a>
     </nav>
 
-    <div class="container">
-        <h1 class="page-title rainbow-text">📖 Complete SQL Notes</h1>
-        <p class="subtitle">All 70+ topics with real code examples and explanations</p>
-
-        <div class="search-bar">
-            <input type="text" id="searchInput"
-                placeholder="🔍 Search topics... (e.g., JOIN, SELECT, Trigger, Procedure)">
-        </div>
-
-        <div class="notes-grid" id="notesGrid"></div>
-    </div>
-
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 SQL Mastery Hub | 70+ Topics with real examples and practice code</p>
+        <p>© 2026 MS SQL Mastery Hub | Authored by <span class="footer-author">Amit Kumar Prasad</span></p>
     </footer>
 
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="topics_data.js"></script>
     <script src="script.js"></script>
 </body>
 

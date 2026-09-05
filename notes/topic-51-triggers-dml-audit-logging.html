@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>51. Triggers (DML & Audit Logging) | MS SQL Mastery Hub</title>
+    <meta name="description" content="Automatically execute procedural code on table INSERT, UPDATE, or DELETE events.">
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('sql_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Top Brand Header -->
+    <header class="top-brand-bar">
+        <a href="../index.html" class="brand-logo">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>SQL Mastery Hub</span>
+            <span class="brand-badge">PRO</span>
+        </a>
+        <div class="top-bar-actions">
+            <a href="../notes.html" class="quick-link-btn">Curriculum</a>
+            <a href="../playground.html" class="quick-link-btn">Playground</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span>Theme</span>
+            </button>
+            <a href="../MS_SQL_Notes.pdf" download class="quick-link-btn" style="border-color: var(--cyan-primary); color: var(--cyan-primary);">PDF Guide</a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="../notes.html">Notes</a>
+            <span>/</span>
+            <span style="color: var(--cyan-primary);">Topic 51</span>
+        </nav>
+
+        <article class="lesson-article">
+            <div class="lesson-meta-bar">
+                <div>
+                    <span class="topic-num-badge">TOPIC #51</span>
+                    <span class="badge badge-advanced">Advanced</span>
+                    <span class="badge" style="background: var(--cyan-subtle); color: var(--cyan-primary); border: 1px solid var(--border-cyan);">Database Objects</span>
+                </div>
+                <div style="font-size: 0.88rem; color: var(--text-muted); display: flex; align-items: center; gap: 6px;">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>5 min read</span>
+                </div>
+            </div>
+
+            <h1>Triggers (DML & Audit Logging)</h1>
+            <p class="lead" style="color: var(--text-muted); font-size: 1.08rem; margin-bottom: 2rem;">Automatically execute procedural code on table INSERT, UPDATE, or DELETE events.</p>
+
+            <!-- Action Toolbar -->
+            <div class="lesson-toolbar">
+                <button class="btn btn-secondary btn-sm" id="completeBtn" onclick="toggleCompletion(51)">
+                    <span id="completeText">Mark as Completed</span>
+                </button>
+                <button class="btn btn-secondary btn-sm" onclick="copyCodeFromBlock()">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    <span>Copy Code</span>
+                </button>
+                <a href="../playground.html?query=triggers-dml-audit-logging" class="btn btn-accent btn-sm">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                    <span>Open in Playground</span>
+                </a>
+                <a href="../Practice-Codes/51 SQL Query Triggers.sql" download class="btn btn-secondary btn-sm">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Download Script</span>
+                </a>
+            </div>
+
+            <!-- Concept Explanation -->
+            <section class="content-block">
+                <h2>Concept Overview</h2>
+                <p>Triggers are specialized stored procedures that execute automatically in response to DML operations on a table. SQL Server provides virtual tables `inserted` and `deleted` inside the trigger to inspect old and new values.</p>
+            </section>
+
+            <!-- SQL Code Snippet -->
+            <section class="content-block">
+                <h2>Hands-on SQL Script</h2>
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-title">51 SQL Query Triggers.sql</span>
+                        <button class="copy-btn" onclick="copyCodeFromBlock()">Copy SQL</button>
+                    </div>
+                    <div class="code-body">
+                        <pre class="sql-code" id="sqlContent"><code>--TRIGGER 
+--used <span class="sql-keyword">in</span> DML (<span class="sql-keyword">INSERT</span>, <span class="sql-keyword">UPDATE</span>, <span class="sql-keyword">DELETE</span>)
+--we can add multiple triggers <span class="sql-keyword">in</span> a single table.
+
+<span class="sql-keyword">use</span> google
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+
+--AFTER TRIGGER 
+--trigger <span class="sql-keyword">on</span> <span class="sql-keyword">update</span> command.
+--when we have to display a message we <span class="sql-keyword">use</span> "Print" command. 
+<span class="sql-keyword">create trigger</span> Trig_upd <span class="sql-keyword">on</span> employee
+after <span class="sql-keyword">update</span>
+<span class="sql-keyword">as</span> <span class="sql-keyword">begin</span>
+print 'Your data has been updated'
+<span class="sql-keyword">end</span>
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+<span class="sql-keyword">update</span> employee <span class="sql-keyword">set</span> age=29 <span class="sql-keyword">where</span> name = 'Amit'
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+--altering the trigger's maessage.
+Alter trigger trig_upd <span class="sql-keyword">on</span> employee
+after <span class="sql-keyword">update</span>
+<span class="sql-keyword">as</span> <span class="sql-keyword">begin</span>
+print 'you have successfully updated the data <span class="sql-keyword">in</span> employee table'
+<span class="sql-keyword">end</span>
+
+<span class="sql-keyword">update</span> employee <span class="sql-keyword">set</span> salary =65000 <span class="sql-keyword">where</span> name='Anjali'
+
+--adding trigger <span class="sql-keyword">on</span> <span class="sql-keyword">insert</span> <span class="sql-keyword">and</span> <span class="sql-keyword">delete</span> inside the table employee.
+<span class="sql-keyword">create trigger</span> tri_in_del <span class="sql-keyword">on</span> employee
+after <span class="sql-keyword">insert</span>, <span class="sql-keyword">delete</span>
+<span class="sql-keyword">as</span> <span class="sql-keyword">begin</span>
+print 'you have inserted <span class="sql-keyword">or</span> deleted row <span class="sql-keyword">or</span> multiple rows <span class="sql-keyword">from</span> employee table'
+<span class="sql-keyword">end</span>
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+<span class="sql-keyword">delete</span> <span class="sql-keyword">from</span> employee <span class="sql-keyword">where</span> id = 33
+
+<span class="sql-keyword"><span class="sql-keyword">insert</span> <span class="sql-keyword">into</span></span> employee <span class="sql-keyword">values</span> (33,'Kabir',29,'Male',45000,'Marketing','San jose','USA')
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+--dropping the triggers.
+<span class="sql-keyword">drop trigger</span> tri_in_del
+
+<span class="sql-keyword">drop trigger</span> trig_upd
+
+
+
+
+--INSTEAD OF
+--"instead of" trigger won't let the desired operation to happen.
+<span class="sql-keyword">create trigger</span> t_u_i <span class="sql-keyword">on</span> employee
+instead of <span class="sql-keyword">update</span>
+<span class="sql-keyword">as</span> <span class="sql-keyword">begin</span>
+print 'you cannot <span class="sql-keyword">update</span> any data <span class="sql-keyword">in</span> the employee table'
+<span class="sql-keyword">end</span>
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+<span class="sql-keyword">update</span> employee <span class="sql-keyword">set</span> department = 'IT' <span class="sql-keyword">where</span> name = 'Badal'
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+
+
+<span class="sql-keyword">create trigger</span> ti_del_inst <span class="sql-keyword">on</span> employee
+instead of <span class="sql-keyword">delete</span>
+<span class="sql-keyword">as</span> <span class="sql-keyword">begin</span> 
+print 'you cannot <span class="sql-keyword">delete</span> any row <span class="sql-keyword">from</span> the table employee'
+<span class="sql-keyword">end</span>
+
+<span class="sql-keyword">delete</span> <span class="sql-keyword">from</span> employee <span class="sql-keyword">where</span> department= 'IT'
+
+<span class="sql-keyword">select</span>* <span class="sql-keyword">from</span> employee
+
+
+
+--HERE WE CAN DISABLE THE TRIGGER
+<span class="sql-keyword">alter table</span> employee disable trigger ti_del_inst 
+
+<span class="sql-keyword">delete</span> <span class="sql-keyword">from</span> employee <span class="sql-keyword">where</span> name = 'Ganesh'
+
+<span class="sql-keyword">select</span> * <span class="sql-keyword">from</span> employee
+--enabling the trigger again.
+<span class="sql-keyword">alter table</span> employee enable trigger ti_del_inst
+
+<span class="sql-keyword">delete</span> <span class="sql-keyword">from</span> employee <span class="sql-keyword">where</span> name = 'Ravi'
+
+<span class="sql-keyword">select</span> * <span class="sql-keyword">from</span> employee
+
+sp_help 'employee'
+
+<span class="sql-keyword">DROP TRIGGER</span> t_u_i , ti_del_inst</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pro Tip Box -->
+            <div class="tip-card">
+                <strong>Best Practice:</strong> Always write triggers that handle MULTI-ROW operations! Avoid assuming `inserted` contains only a single row.
+            </div>
+
+            <!-- Expected Output -->
+            <section class="content-block">
+                <h2>Execution & Behavior</h2>
+                <div style="background: var(--bg-code); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.9rem; color: #38bdf8;">
+                    Audit log record inserted automatically upon employee salary update.
+                </div>
+            </section>
+
+            <!-- Pagination Navigation -->
+            <div class="lesson-pagination">
+                <a href="topic-50-exception-handling-try-catch.html" class="btn btn-secondary btn-sm">← 50. Exception Handling (TRY...CATCH)</a>
+                <a href="../notes.html" class="btn btn-secondary btn-sm">All Topics</a>
+                <a href="topic-52-cast-and-convert-functions.html" class="btn btn-primary btn-sm">52. CAST and CONVERT Functions →</a>
+            </div>
+        </article>
+    </main>
+
+    <!-- Bottom Rectangular Capsule Navbar (Glassmorphism) -->
+    <nav class="bottom-capsule-nav" aria-label="Bottom Navigation">
+        <a href="../index.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="../notes.html" class="nav-item active">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span class="nav-text">Notes</span>
+        </a>
+        <a href="../challenges.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="nav-text">Challenges</span>
+        </a>
+        <a href="../playground.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <span class="nav-text">Playground</span>
+        </a>
+        <a href="../about.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="../MS_SQL_Notes.pdf" download class="nav-item nav-btn-highlight">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="nav-text">PDF</span>
+        </a>
+    </nav>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="../script.js"></script>
+    <script>
+        function copyCodeFromBlock() {
+            const codeEl = document.getElementById('sqlContent');
+            if (codeEl) {
+                const text = codeEl.innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    if (window.showToast) {
+                        window.showToast("SQL script copied to clipboard", "success");
+                    }
+                });
+            }
+        }
+
+        function checkCompletionState() {
+            const completed = JSON.parse(localStorage.getItem('sql_completed_topics') || '[]');
+            const isDone = completed.includes(51);
+            const btn = document.getElementById('completeBtn');
+            const text = document.getElementById('completeText');
+            if (btn && text) {
+                if (isDone) {
+                    btn.classList.add('btn-primary');
+                    btn.classList.remove('btn-secondary');
+                    text.textContent = "Completed";
+                } else {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-secondary');
+                    text.textContent = "Mark as Completed";
+                }
+            }
+        }
+
+        function toggleCompletion(id) {
+            let completed = JSON.parse(localStorage.getItem('sql_completed_topics') || '[]');
+            if (completed.includes(id)) {
+                completed = completed.filter(x => x !== id);
+                if (window.showToast) window.showToast("Topic marked incomplete", "info");
+            } else {
+                completed.push(id);
+                if (window.showToast) window.showToast("Topic marked as completed", "success");
+            }
+            localStorage.setItem('sql_completed_topics', JSON.stringify(completed));
+            checkCompletionState();
+        }
+
+        document.addEventListener('DOMContentLoaded', checkCompletionState);
+    </script>
+</body>
+</html>

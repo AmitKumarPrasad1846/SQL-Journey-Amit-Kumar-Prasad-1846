@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive SQL Playground | MS SQL Mastery Hub</title>
+    <meta name="description"
+        content="Execute SQL queries live in your browser against pre-seeded relational tables. Test SELECT, WHERE, ORDER BY, and aggregations.">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('sql_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- Top Brand Header -->
+    <header class="top-brand-bar">
+        <a href="index.html" class="brand-logo">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>SQL Mastery Hub</span>
+            <span class="brand-badge">PLAYGROUND</span>
+        </a>
+        <div class="top-bar-actions">
+            <a href="notes.html" class="quick-link-btn">Curriculum</a>
+            <a href="challenges.html" class="quick-link-btn">Challenges</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span>Theme</span>
+            </button>
+            <a href="MS_SQL_Notes.pdf" download class="quick-link-btn"
+                style="border-color: var(--cyan-primary); color: var(--cyan-primary);">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>PDF Guide</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container" style="max-width: 1400px;">
+        <div class="section-header" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+            <div class="hero-pill-badge">
+                <span>In-Browser Query Engine</span>
+            </div>
+            <h1 class="section-title">Interactive SQL Playground</h1>
+            <p class="section-subtitle">
+                Run T-SQL queries directly in your browser. Choose from preset queries or write custom queries
+                targeting the preloaded schema.
+            </p>
+        </div>
+
+        <!-- Playground Layout -->
+        <div class="playground-layout">
+            <!-- Schema Sidebar -->
+            <aside class="schema-sidebar">
+                <div class="schema-title">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    <span>Relational Tables</span>
+                </div>
+
+                <!-- Table 1: Employees -->
+                <div class="table-schema-item">
+                    <div class="table-schema-name">
+                        <span>Employees</span>
+                        <span class="badge badge-beginner">8 rows</span>
+                    </div>
+                    <ul class="table-cols-list">
+                        <li><strong>id</strong>: INT (PK)</li>
+                        <li><strong>name</strong>: VARCHAR</li>
+                        <li><strong>age</strong>: INT</li>
+                        <li><strong>gender</strong>: VARCHAR</li>
+                        <li><strong>salary</strong>: INT</li>
+                        <li><strong>department</strong>: VARCHAR</li>
+                        <li><strong>city</strong>: VARCHAR</li>
+                    </ul>
+                </div>
+
+                <!-- Table 2: Departments -->
+                <div class="table-schema-item">
+                    <div class="table-schema-name">
+                        <span>Departments</span>
+                        <span class="badge badge-beginner">5 rows</span>
+                    </div>
+                    <ul class="table-cols-list">
+                        <li><strong>dept_id</strong>: INT (PK)</li>
+                        <li><strong>dept_name</strong>: VARCHAR</li>
+                        <li><strong>manager</strong>: VARCHAR</li>
+                        <li><strong>budget</strong>: INT</li>
+                        <li><strong>location</strong>: VARCHAR</li>
+                    </ul>
+                </div>
+
+                <!-- Table 3: Projects -->
+                <div class="table-schema-item">
+                    <div class="table-schema-name">
+                        <span>Projects</span>
+                        <span class="badge badge-beginner">4 rows</span>
+                    </div>
+                    <ul class="table-cols-list">
+                        <li><strong>pid</strong>: INT (PK)</li>
+                        <li><strong>project_name</strong>: VARCHAR</li>
+                        <li><strong>technology</strong>: VARCHAR</li>
+                        <li><strong>pincode</strong>: INT</li>
+                        <li><strong>budget</strong>: INT</li>
+                    </ul>
+                </div>
+
+                <!-- Table 4: Students -->
+                <div class="table-schema-item">
+                    <div class="table-schema-name">
+                        <span>Students</span>
+                        <span class="badge badge-beginner">5 rows</span>
+                    </div>
+                    <ul class="table-cols-list">
+                        <li><strong>id</strong>: INT (PK)</li>
+                        <li><strong>name</strong>: VARCHAR</li>
+                        <li><strong>age</strong>: INT</li>
+                        <li><strong>grade</strong>: VARCHAR</li>
+                        <li><strong>major</strong>: VARCHAR</li>
+                        <li><strong>score</strong>: INT</li>
+                    </ul>
+                </div>
+
+                <!-- Table 5: Orders -->
+                <div class="table-schema-item">
+                    <div class="table-schema-name">
+                        <span>Orders</span>
+                        <span class="badge badge-beginner">5 rows</span>
+                    </div>
+                    <ul class="table-cols-list">
+                        <li><strong>order_id</strong>: INT (PK)</li>
+                        <li><strong>customer</strong>: VARCHAR</li>
+                        <li><strong>product</strong>: VARCHAR</li>
+                        <li><strong>amount</strong>: INT</li>
+                        <li><strong>status</strong>: VARCHAR</li>
+                        <li><strong>order_date</strong>: DATE</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Editor -->
+            <div class="playground-main">
+                <div class="editor-card">
+                    <div class="editor-toolbar">
+                        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                            <label for="presetQueriesSelect"
+                                style="font-size: 0.85rem; font-weight: 700; color: var(--text-main);">
+                                Presets:
+                            </label>
+                            <select id="presetQueriesSelect"
+                                style="padding: 7px 12px; background: var(--bg-secondary); border: 1px solid var(--border-cyan); border-radius: 8px; color: var(--text-main); font-family: var(--font-sans); font-size: 0.88rem; cursor: pointer;">
+                                <option value="">-- Select a Query Preset --</option>
+                                <option value="SELECT * FROM Employees WHERE Salary > 75000 ORDER BY Salary DESC;">
+                                    High Salary Employees (> 75,000)
+                                </option>
+                                <option value="SELECT TOP 3 * FROM Employees ORDER BY Salary DESC;">
+                                    Top 3 Highest Paid Employees
+                                </option>
+                                <option value="SELECT * FROM Employees WHERE City LIKE 'Indore';">
+                                    Employees Located in Indore
+                                </option>
+                                <option value="SELECT * FROM Students WHERE Score > 90;">
+                                    Top Performing Students
+                                </option>
+                                <option value="SELECT * FROM Projects WHERE Budget > 150000;">
+                                    High-Budget Projects
+                                </option>
+                                <option value="SELECT * FROM Orders WHERE Status = 'Completed';">
+                                    Completed Customer Orders
+                                </option>
+                            </select>
+                        </div>
+
+                        <button id="runQueryBtn" class="btn btn-primary btn-sm">
+                            <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            <span>Run Query</span>
+                        </button>
+                    </div>
+
+                    <textarea id="playgroundEditor" class="editor-textarea"
+                        placeholder="Write your SQL query here... (e.g. SELECT * FROM Employees WHERE Salary > 75000;)"
+                        spellcheck="false">SELECT * FROM Employees WHERE Salary > 75000 ORDER BY Salary DESC;</textarea>
+                </div>
+
+                <!-- Results Table -->
+                <div class="results-card">
+                    <div class="results-header">
+                        <strong style="color: var(--text-main); font-size: 0.98rem;">Query Execution Results</strong>
+                        <span id="executionStats" style="font-size: 0.85rem; color: var(--text-muted);">Ready</span>
+                    </div>
+
+                    <div id="queryResultsContainer">
+                        <!-- Rendered by script.js -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Rectangular Capsule Navbar (Glassmorphism) -->
+    <nav class="bottom-capsule-nav" aria-label="Bottom Navigation">
+        <a href="index.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="notes.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span class="nav-text">Notes</span>
+        </a>
+        <a href="challenges.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="nav-text">Challenges</span>
+        </a>
+        <a href="playground.html" class="nav-item active">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <span class="nav-text">Playground</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="MS_SQL_Notes.pdf" download class="nav-item nav-btn-highlight">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="nav-text">PDF</span>
+        </a>
+    </nav>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="topics_data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

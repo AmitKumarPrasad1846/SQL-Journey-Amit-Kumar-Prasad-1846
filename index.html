@@ -1,83 +1,282 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Mastery Hub | Home</title>
+    <title>MS SQL Mastery Hub | From Zero to Pro by Amit Kumar Prasad</title>
+    <meta name="description"
+        content="Master Microsoft SQL Server with 57 structured lessons, interactive SQL playground, practical challenges, and complete PDF theory notes by Amit Kumar Prasad.">
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('sql_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">🚀 SQL Mastery Hub</div>
-        <div class="nav-links">
-            <a href="index.html" class="active">🏠 Home</a>
-            <a href="notes.html">📚 Notes</a>
-            <a href="challenges.html">⚡ Challenges</a>
-        </div>
-        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
-    </nav>
-
-    <div class="hero vibgyor-bg">
-        <h1 class="rainbow-text">Master SQL From Zero to Hero</h1>
-        <p>70+ Topics • Interactive Challenges • Real-World Examples • Complete Notes</p>
-        <div class="hero-buttons">
-            <a href="notes.html" class="btn btn-primary">📖 Start Learning</a>
-            <a href="challenges.html" class="btn btn-secondary">🎯 Take Challenges</a>
-        </div>
-    </div>
-
-    <div class="container">
-        <h2 class="section-title">✨ What You'll Learn</h2>
-        <div class="stats-grid">
-            <div class="stat-card" style="border-top: 4px solid #FF0000;">
-                <div class="stat-number">70+</div>
-                <div>SQL Topics Covered</div>
-            </div>
-            <div class="stat-card" style="border-top: 4px solid #FF7F00;">
-                <div class="stat-number">50+</div>
-                <div>Interactive Challenges</div>
-            </div>
-            <div class="stat-card" style="border-top: 4px solid #FFFF00;">
-                <div class="stat-number">100+</div>
-                <div>Code Examples</div>
-            </div>
-            <div class="stat-card" style="border-top: 4px solid #00FF00;">
-                <div class="stat-number">24/7</div>
-                <div>Practice Access</div>
-            </div>
-        </div>
-
-        <h2 class="section-title">📚 Topics Include</h2>
-        <div class="topics-preview">
-            <span class="topic-tag" style="background:#FF000020; color:#FF0000;">📊 SELECT Queries</span>
-            <span class="topic-tag" style="background:#FF7F0020; color:#FF7F00;">🔗 JOINS (INNER, OUTER, CROSS)</span>
-            <span class="topic-tag" style="background:#FFFF0020; color:#CCCC00;">📈 GROUP BY & HAVING</span>
-            <span class="topic-tag" style="background:#00FF0020; color:#00AA00;">🔄 Subqueries & CTE</span>
-            <span class="topic-tag" style="background:#0000FF20; color:#0000FF;">📊 Window Functions</span>
-            <span class="topic-tag" style="background:#4B008220; color:#4B0082;">⚙️ Stored Procedures</span>
-            <span class="topic-tag" style="background:#9400D320; color:#9400D3;">🔔 Triggers</span>
-            <span class="topic-tag" style="background:#FF149320; color:#FF1493;">📑 Indexes & Optimization</span>
-            <span class="topic-tag" style="background:#00CED120; color:#00CED1;">💾 Transactions</span>
-            <span class="topic-tag" style="background:#FF450020; color:#FF4500;">🎯 RANK & DENSE_RANK</span>
-        </div>
-
-        <div class="drive-card">
-            <h3>📥 Download Complete SQL Resources</h3>
-            <p>Access all MS SQL scripts, PDF notes, practice files (70+ files covering all topics from basic to
-                advanced)</p>
-            <a href="https://drive.google.com/file/d/1tdkH7berngNMRzoSOLJGaBhlFNDueHd1/view?usp=drive_link"
-                class="btn-drive" target="_blank">
-                🚀 Download from Google Drive
+    <!-- Top Brand Bar -->
+    <header class="top-brand-bar">
+        <a href="index.html" class="brand-logo">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>SQL Mastery Hub</span>
+            <span class="brand-badge">PRO EDITION</span>
+        </a>
+        <div class="top-bar-actions">
+            <a href="notes.html" class="quick-link-btn">Curriculum</a>
+            <a href="playground.html" class="quick-link-btn">Playground</a>
+            <a href="about.html" class="quick-link-btn">Author</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span>Theme</span>
+            </button>
+            <a href="MS_SQL_Notes.pdf" download class="quick-link-btn"
+                style="border-color: var(--cyan-primary); color: var(--cyan-primary);">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>PDF Notes</span>
             </a>
         </div>
-    </div>
+    </header>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-pill-badge">
+            <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Open Source Community Learning Resource</span>
+        </div>
+        <h1>
+            Master <span class="hero-gradient-text">Microsoft SQL Server</span><br>
+            From Foundation to Architecture
+        </h1>
+        <p class="lead">
+            A comprehensive, battle-tested platform featuring <strong>57 structured SQL lessons</strong>, an
+            interactive in-browser query playground, coding challenges, and handcrafted theory notes.
+        </p>
+        <div class="hero-actions">
+            <a href="notes.html" class="btn btn-primary">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+                <span>Explore 57 Lessons</span>
+            </a>
+            <a href="playground.html" class="btn btn-secondary">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                <span>Launch SQL Playground</span>
+            </a>
+            <a href="MS_SQL_Notes.pdf" download class="btn btn-accent">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download PDF Notes (7.3 MB)</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">57</div>
+                <div class="stat-label">Structured SQL Topics</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Production Code Examples</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Interactive Challenges</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7.3 MB</div>
+                <div class="stat-label">Comprehensive Theory PDF</div>
+            </div>
+        </div>
+
+        <!-- Curriculum Pillars -->
+        <section style="margin: 3.5rem 0;">
+            <div class="section-header">
+                <h2 class="section-title">Core Curriculum Pillars</h2>
+                <p class="section-subtitle">Structured roadmap designed to transition from foundational queries to
+                    enterprise database administration.</p>
+            </div>
+
+            <div class="notes-grid">
+                <div class="topic-card">
+                    <div>
+                        <span class="topic-num-badge">PILLAR 01</span>
+                        <h3 class="topic-title" style="margin-top: 10px;">Foundational DDL & DML</h3>
+                        <p class="topic-desc">Schema lifecycle management: CREATE, ALTER, DROP, TRUNCATE, INSERT,
+                            UPDATE, and safe transactional row deletions.</p>
+                    </div>
+                    <a href="notes.html" class="btn btn-secondary btn-sm">
+                        <span>Explore Topics</span>
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                    </a>
+                </div>
+
+                <div class="topic-card">
+                    <div>
+                        <span class="topic-num-badge">PILLAR 02</span>
+                        <h3 class="topic-title" style="margin-top: 10px;">Relational JOINS & Sets</h3>
+                        <p class="topic-desc">Relational algebra: INNER, LEFT, RIGHT, FULL, and CROSS joins across
+                            multiple tables with set operations.</p>
+                    </div>
+                    <a href="notes.html" class="btn btn-secondary btn-sm">
+                        <span>Explore Joins</span>
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                    </a>
+                </div>
+
+                <div class="topic-card">
+                    <div>
+                        <span class="topic-num-badge">PILLAR 03</span>
+                        <h3 class="topic-title" style="margin-top: 10px;">Aggregations & Analytics</h3>
+                        <p class="topic-desc">GROUP BY, HAVING, ROLLUP subtotals, subqueries, and window functions
+                            including ROW_NUMBER(), RANK(), and DENSE_RANK().</p>
+                    </div>
+                    <a href="notes.html" class="btn btn-secondary btn-sm">
+                        <span>Explore Analytics</span>
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                    </a>
+                </div>
+
+                <div class="topic-card">
+                    <div>
+                        <span class="topic-num-badge">PILLAR 04</span>
+                        <h3 class="topic-title" style="margin-top: 10px;">Programmability & Admin</h3>
+                        <p class="topic-desc">Stored Procedures, Views, DML Triggers, User-Defined Functions, ACID
+                            Transactions, and Clustered/Non-Clustered Indexes.</p>
+                    </div>
+                    <a href="notes.html" class="btn btn-secondary btn-sm">
+                        <span>Explore Objects</span>
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Playground Teaser -->
+        <section
+            style="background: var(--bg-card); border: 1px solid var(--border-cyan); border-radius: 20px; padding: 2.5rem; margin: 3.5rem 0; box-shadow: var(--shadow-md);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
+                <div>
+                    <span class="hero-pill-badge">IN-BROWSER ENGINE</span>
+                    <h2 style="font-size: 2rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem;">
+                        Interactive SQL Playground
+                    </h2>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.65; margin-bottom: 1.5rem;">
+                        Zero configuration required. Execute queries directly inside your browser against pre-seeded
+                        databases: <strong>Employees</strong>, <strong>Departments</strong>, <strong>Projects</strong>,
+                        <strong>Students</strong>, and <strong>Orders</strong>.
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="playground.html" class="btn btn-primary">
+                            <span>Open Playground</span>
+                            <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+                        </a>
+                        <a href="challenges.html" class="btn btn-secondary">
+                            <span>Take Challenges</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="code-container" style="margin: 0;">
+                    <div class="code-header">
+                        <span class="code-title">playground_preview.sql</span>
+                        <span class="badge badge-beginner">Live Runner</span>
+                    </div>
+                    <div class="code-body">
+                        <pre class="sql-code"><code><span class="sql-keyword">SELECT</span> Name, Department, Salary
+<span class="sql-keyword">FROM</span> Employees
+<span class="sql-keyword">WHERE</span> Salary &gt; <span class="sql-number">80000</span>
+<span class="sql-keyword">ORDER BY</span> Salary <span class="sql-keyword">DESC</span>;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prominent Download Section -->
+        <section class="download-hero-card">
+            <span class="download-badge">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>COMPREHENSIVE PDF RESOURCE</span>
+            </span>
+            <h2 class="download-hero-title">Download Complete Theory Guide</h2>
+            <p class="download-hero-desc">
+                Access the 7.3 MB comprehensive MS SQL manual created by Amit Kumar Prasad, containing full
+                theoretical concepts, architecture diagrams, syntax reference, and interview question sets.
+            </p>
+            <div class="download-actions-group">
+                <a href="MS_SQL_Notes.pdf" download class="btn btn-primary">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    <span>Direct Download (7.3 MB)</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1tdkH7berngNMRzoSOLJGaBhlFNDueHd1/view?usp=drive_link"
+                    target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    <span>Google Drive Mirror</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Author Spotlight Section -->
+        <section
+            style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 18px; padding: 2.2rem; text-align: center; margin: 3rem 0;">
+            <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem;">
+                Authored by Amit Kumar Prasad
+            </h3>
+            <p style="color: var(--cyan-primary); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.8rem;">
+                IoT & Embedded Systems Developer | Google Student Ambassador | ECE @ LNCT + AI/ML @ IIT Indore
+            </p>
+            <p style="color: var(--text-muted); max-width: 620px; margin: 0 auto 1.4rem; font-size: 0.92rem;">
+                Focused on database architecture, embedded engineering, and machine learning systems.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <a href="about.html" class="btn btn-secondary btn-sm">Full Profile</a>
+                <a href="mailto:amitkrprasad1846@gmail.com" class="btn btn-accent btn-sm">amitkrprasad1846@gmail.com</a>
+                <a href="https://github.com/AmitKumarPrasad1846" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary btn-sm">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Rectangular Capsule Navbar (Glassmorphism) -->
+    <nav class="bottom-capsule-nav" aria-label="Bottom Navigation">
+        <a href="index.html" class="nav-item active">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="notes.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span class="nav-text">Notes</span>
+        </a>
+        <a href="challenges.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="nav-text">Challenges</span>
+        </a>
+        <a href="playground.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <span class="nav-text">Playground</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="MS_SQL_Notes.pdf" download class="nav-item nav-btn-highlight">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="nav-text">PDF</span>
+        </a>
+    </nav>
+
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2026 SQL Mastery Hub | Made with 💜 for SQL Learners | All scripts from basic to advanced</p>
+        <p>© 2026 MS SQL Mastery Hub | Authored by <span class="footer-author">Amit Kumar Prasad</span></p>
     </footer>
 
+    <!-- Toast Notifications Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="topics_data.js"></script>
     <script src="script.js"></script>
 </body>
 

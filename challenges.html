@@ -1,51 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SQL Challenges | Test Your Skills</title>
+    <title>Interactive SQL Challenges | Test Your Skills</title>
+    <meta name="description"
+        content="Test your real-world SQL skills with interactive challenges. Instant query evaluation, schema references, score streak, and pro tips.">
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('sql_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">🚀 SQL Mastery Hub</div>
-        <div class="nav-links">
-            <a href="index.html">🏠 Home</a>
-            <a href="notes.html">📚 Notes</a>
-            <a href="challenges.html" class="active">⚡ Challenges</a>
+    <!-- Top Brand Header -->
+    <header class="top-brand-bar">
+        <a href="index.html" class="brand-logo">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>SQL Mastery Hub</span>
+            <span class="brand-badge">CHALLENGES</span>
+        </a>
+        <div class="top-bar-actions">
+            <a href="notes.html" class="quick-link-btn">Curriculum</a>
+            <a href="playground.html" class="quick-link-btn">Playground</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span>Theme</span>
+            </button>
+            <a href="MS_SQL_Notes.pdf" download class="quick-link-btn"
+                style="border-color: var(--cyan-primary); color: var(--cyan-primary);">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>PDF Guide</span>
+            </a>
         </div>
-        <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container container-narrow">
+        <div class="section-header" style="margin-top: 1.5rem;">
+            <div class="hero-pill-badge">
+                <span>Hands-on Problem Solving</span>
+            </div>
+            <h1 class="section-title">Interactive SQL Challenges</h1>
+            <p class="section-subtitle">
+                Solve real-world database query problems. Write queries, submit for instant validation, and test
+                your knowledge across all difficulty levels.
+            </p>
+        </div>
+
+        <!-- Challenge Stats Bar -->
+        <div class="challenge-stats">
+            <div class="stat-badge" style="color: var(--text-main); display: flex; align-items: center; gap: 8px;">
+                <svg class="svg-icon svg-icon-sm" style="color: var(--cyan-primary);" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>Score:</span>
+                <span id="userScoreDisplay" style="color: var(--cyan-primary); font-size: 1.3rem; font-weight: 800;">0</span>
+            </div>
+            <div class="stat-badge">
+                <span class="badge badge-beginner">Active Session</span>
+            </div>
+        </div>
+
+        <!-- Progress Track -->
+        <div class="progress-track" style="margin-bottom: 2rem;">
+            <div class="progress-fill" id="challengeProgressFill" style="width: 12%;"></div>
+        </div>
+
+        <!-- Dynamic Challenge Container -->
+        <div class="challenge-container" id="challengeContainer">
+            <!-- Rendered by script.js -->
+        </div>
+
+        <!-- Pro Tip Card -->
+        <div class="tip-card" style="margin-top: 2rem;">
+            <strong>Syntax Tip:</strong> SQL keywords such as <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>,
+            and <code>GROUP BY</code> are case-insensitive, but maintaining uppercase keywords is industry standard.
+        </div>
+    </main>
+
+    <!-- Bottom Rectangular Capsule Navbar (Glassmorphism) -->
+    <nav class="bottom-capsule-nav" aria-label="Bottom Navigation">
+        <a href="index.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="notes.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span class="nav-text">Notes</span>
+        </a>
+        <a href="challenges.html" class="nav-item active">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="nav-text">Challenges</span>
+        </a>
+        <a href="playground.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <span class="nav-text">Playground</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="MS_SQL_Notes.pdf" download class="nav-item nav-btn-highlight">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="nav-text">PDF</span>
+        </a>
     </nav>
 
-    <div class="container">
-        <h1 class="page-title rainbow-text">⚡ Interactive SQL Challenges</h1>
-        <p class="subtitle">Test your knowledge with real-world SQL problems</p>
-
-        <div class="challenge-stats">
-            <div class="stat-badge">📊 Challenge <span id="currentIndex">1</span> / <span id="totalChallenges">20</span>
-            </div>
-            <div class="stat-badge">⭐ Score: <span id="score">0</span></div>
-        </div>
-
-        <div class="challenge-container" id="challengeContainer">
-            <!-- Dynamic content loads here -->
-        </div>
-
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
-
-        <div class="tip-box">
-            💡 <strong>Pro Tip:</strong> Write the exact SQL query as shown in the expected answer. Keywords like
-            SELECT, FROM, WHERE, JOIN should be used correctly.
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p>© 2026 SQL Mastery Hub | Keep practicing! 💪</p>
-    </footer>
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
 
     <script src="script.js"></script>
 </body>

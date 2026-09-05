@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Amit Kumar Prasad | Author & Developer</title>
+    <meta name="description"
+        content="Profile, education background, and contact details of Amit Kumar Prasad — IoT & Embedded Systems Developer, Google Student Ambassador, and Creator of MS SQL Mastery Hub.">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const saved = localStorage.getItem('sql_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- Top Brand Header -->
+    <header class="top-brand-bar">
+        <a href="index.html" class="brand-logo">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span>SQL Mastery Hub</span>
+            <span class="brand-badge">AUTHOR</span>
+        </a>
+        <div class="top-bar-actions">
+            <a href="notes.html" class="quick-link-btn">Curriculum</a>
+            <a href="playground.html" class="quick-link-btn">Playground</a>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                <span>Theme</span>
+            </button>
+            <a href="MS_SQL_Notes.pdf" download class="quick-link-btn"
+                style="border-color: var(--cyan-primary); color: var(--cyan-primary);">
+                <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>PDF Guide</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Awesome Profile Hero Section -->
+        <section class="about-hero">
+            <!-- Standing Transparent Cutout on Glowing Ground Platform (No Frame) -->
+            <div class="about-profile-figure">
+                <div class="profile-ground-ring"></div>
+                <div class="profile-ground-platform"></div>
+                <div class="profile-foot-shadow"></div>
+                <img src="amit_profile.png" alt="Amit Kumar Prasad" class="about-profile-img" loading="eager">
+            </div>
+
+            <!-- Profile Info & Bio Column -->
+            <div>
+                <span class="hero-pill-badge">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    <span>Developer & Student Ambassador</span>
+                </span>
+                
+                <h1 class="about-title-name">AMIT KUMAR PRASAD</h1>
+                
+                <p class="about-role-tag">
+                    IoT & Embedded Systems Developer | Google Student Ambassador
+                </p>
+
+                <div class="about-badges-group">
+                    <span class="badge" style="background: var(--cyan-subtle); color: var(--cyan-primary); border: 1px solid var(--border-cyan);">
+                        ECE @ LNCT Group of Colleges, Indore
+                    </span>
+                    <span class="badge" style="background: var(--cyan-subtle); color: var(--cyan-primary); border: 1px solid var(--border-cyan);">
+                        AI/ML @ IIT Indore × Drishti CPS
+                    </span>
+                </div>
+
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.5rem;">
+                    Hello! I am Amit Kumar Prasad, an Electronics & Communication Engineering undergraduate at LNCT Group of Colleges, Indore, simultaneously completing an AI/ML diploma certification from IIT Indore × Drishti CPS.
+                </p>
+                
+                <p style="color: var(--text-muted); font-size: 1.02rem; line-height: 1.75;">
+                    I have a passion for building reliable hardware-software interfaces, embedded systems, and scalable database architectures. I created the <strong>MS SQL Mastery Hub</strong> as a community-driven, free platform designed to help learners master relational databases from foundational statements to complex enterprise optimizations.
+                </p>
+
+                <!-- Social & Contact Quick Links -->
+                <div class="about-social-links">
+                    <a href="mailto:amitkrprasad1846@gmail.com" class="social-pill"
+                        style="border-color: var(--cyan-primary); color: var(--cyan-primary); background: var(--cyan-subtle);">
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <span>amitkrprasad1846@gmail.com</span>
+                    </a>
+                    
+                    <button onclick="copyEmail()" class="social-pill" style="cursor: pointer;">
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                        <span>Copy Email</span>
+                    </button>
+
+                    <a href="https://www.linkedin.com/in/amit-kumar-prasad-00b297369/" target="_blank"
+                        rel="noopener noreferrer" class="social-pill">
+                        <span>LinkedIn</span>
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+
+                    <a href="https://github.com/AmitKumarPrasad1846" target="_blank" rel="noopener noreferrer"
+                        class="social-pill">
+                        <span>GitHub</span>
+                        <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+
+                    <a href="https://www.instagram.com/amiku.1846/" target="_blank" rel="noopener noreferrer"
+                        class="social-pill">
+                        <span>Instagram</span>
+                    </a>
+
+                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" class="social-pill">
+                        <span>Twitter / X</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section style="margin: 4rem 0;">
+            <div class="section-header">
+                <span class="hero-pill-badge">ACADEMIC BACKGROUND</span>
+                <h2 class="section-title">Education & Qualifications</h2>
+                <p class="section-subtitle">Formal engineering degree and specialized technological diploma programs</p>
+            </div>
+
+            <div class="education-timeline">
+                <!-- Education Item 1: B.Tech -->
+                <div class="education-card">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-title">B.Tech in Electronics & Communication Engineering</h3>
+                            <div class="education-institution">LNCT Group of Colleges, Indore</div>
+                        </div>
+                        <span class="badge badge-beginner" style="font-size: 0.85rem; padding: 6px 14px;">
+                            2025 – 2029
+                        </span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.65; margin-top: 0.5rem;">
+                        Undergraduate engineering program centered on embedded hardware systems, microcontrollers, digital signal processing, circuit theory, telecommunications, and computer architecture.
+                    </p>
+                    <div class="education-focus-tags">
+                        <span class="focus-chip">Embedded Systems</span>
+                        <span class="focus-chip">Microcontrollers</span>
+                        <span class="focus-chip">Database Management</span>
+                        <span class="focus-chip">IoT Architecture</span>
+                        <span class="focus-chip">Signal Processing</span>
+                    </div>
+                </div>
+
+                <!-- Education Item 2: Diploma AI/ML -->
+                <div class="education-card">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-title">Diploma in Data Science + AI/ML Certification</h3>
+                            <div class="education-institution">IIT Indore × Intellipaat × Drishti CPS</div>
+                        </div>
+                        <span class="badge badge-intermediate" style="font-size: 0.85rem; padding: 6px 14px;">
+                            2025 – 2027
+                        </span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.65; margin-top: 0.5rem;">
+                        Rigorous specialized certification delivered through IIT Indore and Drishti CPS, focusing on supervised and unsupervised machine learning, deep neural networks, predictive modeling, and data analytics pipelines.
+                    </p>
+                    <div class="education-focus-tags">
+                        <span class="focus-chip">Machine Learning</span>
+                        <span class="focus-chip">Deep Learning</span>
+                        <span class="focus-chip">Python Data Science</span>
+                        <span class="focus-chip">Model Optimization</span>
+                        <span class="focus-chip">Computer Vision</span>
+                    </div>
+                </div>
+
+                <!-- Education Item 3: JNV -->
+                <div class="education-card">
+                    <div class="education-header">
+                        <div>
+                            <h3 class="education-title">Higher Secondary & Secondary Education</h3>
+                            <div class="education-institution">Jawahar Navodaya Vidyalaya (JNV)</div>
+                        </div>
+                        <span class="badge" style="background: var(--bg-secondary); color: var(--text-main); border: 1px solid var(--border-subtle); font-size: 0.85rem; padding: 6px 14px;">
+                            2020 – 2024
+                        </span>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.98rem; line-height: 1.65; margin-top: 0.5rem;">
+                        Completed higher secondary education in the Science stream with a strong focus on Physics, Chemistry, Mathematics, and Computer Science foundations.
+                    </p>
+                    <div class="education-focus-tags">
+                        <span class="focus-chip">Physics</span>
+                        <span class="focus-chip">Chemistry</span>
+                        <span class="focus-chip">Mathematics</span>
+                        <span class="focus-chip">Analytical Foundations</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Hub Section -->
+        <section class="contact-hub-card">
+            <span class="hero-pill-badge" style="margin-bottom: 1rem;">GET IN TOUCH</span>
+            <h2 style="font-size: 2.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.8rem;">
+                Let's Connect & Collaborate
+            </h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 600px; margin: 0 auto; line-height: 1.65;">
+                Have questions about MS SQL Server, IoT architectures, or want to collaborate on engineering initiatives? Reach out anytime.
+            </p>
+
+            <div>
+                <div class="contact-email-badge" onclick="copyEmail()" title="Click to copy email">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <span>amitkrprasad1846@gmail.com</span>
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                </div>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                <a href="mailto:amitkrprasad1846@gmail.com" class="btn btn-primary">
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <span>Compose Email</span>
+                </a>
+                <a href="https://www.linkedin.com/in/amit-kumar-prasad-00b297369/" target="_blank"
+                    rel="noopener noreferrer" class="btn btn-secondary">
+                    <span>LinkedIn Profile</span>
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+                <a href="https://github.com/AmitKumarPrasad1846" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-secondary">
+                    <span>GitHub Profile</span>
+                    <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Rectangular Capsule Navbar (Glassmorphism) -->
+    <nav class="bottom-capsule-nav" aria-label="Bottom Navigation">
+        <a href="index.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="notes.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+            <span class="nav-text">Notes</span>
+        </a>
+        <a href="challenges.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <span class="nav-text">Challenges</span>
+        </a>
+        <a href="playground.html" class="nav-item">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <span class="nav-text">Playground</span>
+        </a>
+        <a href="about.html" class="nav-item active">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+        <a href="MS_SQL_Notes.pdf" download class="nav-item nav-btn-highlight">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span class="nav-text">PDF</span>
+        </a>
+    </nav>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+    <script>
+        function copyEmail() {
+            navigator.clipboard.writeText("amitkrprasad1846@gmail.com").then(() => {
+                if (window.showToast) {
+                    window.showToast("Email address copied to clipboard", "success");
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
